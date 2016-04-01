@@ -30,11 +30,11 @@ ECS.Entity.prototype.removeComponent = function removeComponent ( component ){
     // Remove component data by removing the reference to it.
     // Allows either a component function or a string of a component name to be
     // passed in
-    var name = componentName; // assume a string was passed in
+    var name = component; // assume a string was passed in
 
-    if(typeof componentName === 'function'){
+    if(typeof component === 'function'){
         // get the name from the prototype of the passed component function
-        name = componentName.prototype.name;
+        name = component.prototype.name;
     }
 
     // Remove component data by removing the reference to it
@@ -52,16 +52,29 @@ ECS.Entity.prototype.print = function print () {
 
 
 //Systems
-ECS.Systems.Death = function RotationSystem ( entitiesLinkedList ) {
+ECS.Systems.Death = function RotationSystem ( entitiesLinkedList , stage) {
 
     var node = entitiesLinkedList.first;
     while (node)
     {
         var entity = node.object()
         if (entity.components.appearance) {
-            if (entity.components.appearance.sprite.y < 500){
+            if (entity.components.appearance.sprite.y > 810){
 
                 entitiesLinkedList.remove(entity);
+                entity.components.appearance.release();
+                entity.components.velocity.release();
+                entity.components.gravity.release();
+                entity.release();
+
+                stage.removeChild(entity.components.appearance.sprite);
+
+                entity.removeComponent('appearance');
+                entity.removeComponent('velocity');
+                entity.removeComponent('gravity');
+
+                console.log('dead',entity);
+
 
             }
         }

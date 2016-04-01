@@ -61,7 +61,7 @@ function animate() {
     ECS.Systems.Movement(rocketsLL);
     ECS.Systems.Gravity(rocketsLL);
     ECS.Systems.Rotation(rocketsLL);
-    //ECS.Systems.Death(rocketsLL);
+    ECS.Systems.Death(rocketsLL, stage);
 
 
     // each frame we spin the bunny around a bit
@@ -72,8 +72,8 @@ function animate() {
 }
 
 window.onmousedown = function(){
-    for (var i = 0; i < 50; i++){
-        rocketsLL.add(makeRocket(1200,800,Math.random()*-6 - 1,Math.random()*-8 - 1,0,0.04,1,game_resources.rocket.texture));
+    for (var i = 0; i < 25; i++){
+        rocketsLL.add(makeRocket(1200,800,Math.random()*-6 - 1,Math.random()*-8 - 1,0,0.04,0.7,game_resources.rocket.texture));
     }
 
 }
