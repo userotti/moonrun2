@@ -1,0 +1,44 @@
+{
+    "name": "moonrun2",
+    "version": "1.0.0",
+    "main": "./js/main.js",
+    "description": "rond fok",
+
+    "browser": {
+        "gamecore": "./js/libs/gamecore.js",
+        "ECS": "./js/ECS.js"
+    },
+    "browserify-shim": {
+        "gamecore": "gamecore"
+    },
+    "browserify": {
+        "transform": [
+            "browserify-shim"
+        ]
+    },
+    "dependencies": {
+        "pixi": "^0.3.1"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/userotti/moonrun2.git"
+    },
+    "keywords": [
+        "rave",
+        "moonrun",
+        "skietgames",
+        "playnews"
+    ],
+    "author": "userotti",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/userotti/moonrun2/issues"
+    },
+    "homepage": "https://github.com/userotti/moonrun2#readme",
+    "devDependencies": {
+        "browserify-shim": "^3.8.12"
+    }
+}
